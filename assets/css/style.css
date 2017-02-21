@@ -1,0 +1,205 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #003399;
+    background: radial-gradient(#6bb0c7, #003399);
+    background-repeat: no-repeat;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: .5;
+    background-image: url(../images/BG/struckaxiom/lines.png);
+    background-position: 50% 0;
+    background-repeat: round;
+    background-blend-mode: color-dodge;
+}
+
+body:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: .2;
+    background-image: url(../images/BG/struckaxiom/tras.png);
+    background-position: 50% 0;
+    background-repeat: repeat;
+    background-blend-mode: color-dodge;
+}
+
+.container {
+    /*text-align: center;*/
+}
+
+.chr {
+    height: 10rem;
+}
+
+div {
+    margin: 1rem;
+    padding: .2rem;
+}
+
+.btn {
+    cursor: pointer;
+    outline: none;
+    margin: .2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5rem;
+    color: white;
+    padding: 1rem;
+    width: 8rem;
+    border-style: solid;
+    border-color: white;
+    background: radial-gradient(rgba(255, 255, 255, .8), rgba(200, 200, 200, 0));
+}
+
+.player {
+    border-color: #1a75cc;
+    background: radial-gradient(#1a75cc, rgba(0, 0, 0, .5));
+    background-blend-mode: color-dodge;
+}
+
+.defender {
+    border-color: #dd8022;
+    background: radial-gradient(#dd8022, rgba(0, 0, 0, .5));
+    background-blend-mode: color-dodge;
+}
+
+h1 {
+    position: relative;
+    top: -.5rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+h2, h3 {
+    font-size: 1.2rem;
+}
+
+.frame {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    margin: .2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 1rem;
+    color: white;
+    border-width: .1rem;
+    border-style: solid;
+    border-color: white;
+    background: radial-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0), rgba(255, 255, 255, .5));
+}
+
+.frame:before {
+    filter: invert(100%);
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: .2;
+    background-image: url(../images/bg/tumblr_nvvtel916w1u2y46bo3_1280.jpg);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    background-blend-mode: color-dodge;
+}
+
+.frame:after {
+    filter: invert(100%);
+    filter: contrast(200%);
+    filter: brightness(200%);
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 1;
+    background-image: url(../images/aperture/aperture_laboratories_dark_by_atzepeng-d3f5h1r.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: 100% 100%;
+}
+
+#attack {
+    cursor: pointer;
+    margin: .2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5rem;
+    color: #1a75cc;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, .8);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+}
+
+h4 {
+    position: relative;
+    top: .2rem;
+}
+
+#reset {
+    cursor: pointer;
+    margin: .2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5rem;
+    color: white;
+    padding: .8rem;
+    background: transparent;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    border-width: .2rem;
+    border-style: solid;
+    border-color: white;
+    outline: none;
+}
+
+#dead {
+    position: absolute;
+    top: -30000;
+    visibility: hidden;
+}
+
+.logo {
+    float: right;
+    filter: invert(100%);
+    background-image: url(../images/aperture/ApertureLabs_logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 4rem;
+    width: 20rem;
+    ;
+}
