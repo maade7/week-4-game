@@ -12,6 +12,7 @@ var attackPower = pAp;
 var playerHP = pHp;
 var defenderHP = dHp;
 var defenderCP = dCp;
+var defenderName = '';
 
 
 $('#reset').hide();
@@ -23,7 +24,7 @@ var winS = ['win/GLaDOS_01_part1_entry-1.wav', 'winS/GLaDOS_02_part1_entry-2.wav
 
 var winA = ['winA/GLaDOS_03_part1_success-1.wav', 'winA/GLaDOS_04_part1_success-1.wav', 'winA/GLaDOS_05_part1_success-1.wav', 'winA/GLaDOS_15_part1_into_the_fire-1.wav', 'winA/GLaDOS_15_part1_Partyspeech-2.wav', 'winA/GLaDOS_15_part1_Partyspeech-3.wav', 'winA/GLaDOS_coop_test_chamber_oneplayer37.wav', 'winA/GLaDOS_dlc1_leaderboard16.wav', 'winA/GLaDOS_dlc1_leaderboard20.wav', 'winA/GLaDOS_dlc1_leaderboard22.wav', 'winA/GLaDOS_escape_00_part1_nag16-1.wav', 'winA/GLaDOS_mp_coop_fling_1end03.wav', 'winA/GLaDOS_mp_coop_radarroomend.wav', 'winA/GLaDOS_mp_coop_wall_intro03.wav', 'winA/GLaDOS_testchambermisc19.wav']
 
-var pick = ['pick/GLaDOS_00_part1_entry-3.wav', 'loss/pick/GLaDOS_botcoop_intro01.wav', 'pick/GLaDOS_botcoop_intro09.wav', 'pick/GLaDOS_dlc1_leaderboard07.wav', 'pick/GLaDOS_escape_02_spheredestroy1-01.wav', 'pick/GLaDOS_gladosbattle_xfer06.wav']
+var pick = ['pick/GLaDOS_00_part1_entry-3.wav', 'pick/GLaDOS_botcoop_intro01.wav', 'pick/GLaDOS_botcoop_intro09.wav', 'pick/GLaDOS_dlc1_leaderboard07.wav', 'pick/GLaDOS_escape_02_spheredestroy1-01.wav', 'pick/GLaDOS_gladosbattle_xfer06.wav', 'pick/GLaDOS_dlc1_leaderboard04.wav', 'pick/GLaDOS_03_part1_entry-2.wav']
 
 var loss = ['loss/GLaDOS_05_part1_nag4-1.wav', 'loss/GLaDOS_05_part1_nag5-1.wav', 'loss/GLaDOS_10_part1_success-1.wav', 'loss/GLaDOS_11_part1_entry-3.wav', 'loss/GLaDOS_15_part1_into_the_fire-4.wav', 'loss/GLaDOS_dlc1_leaderboard13.wav', 'loss/GLaDOS_epilogue29.wav', 'loss/GLaDOS_escape_02_spheredestroy3-07.wav', 'loss/GLaDOS_escape_02_spheredestroy4-07.wav', 'loss/GLaDOS_escape_02_spheredestroy4-09.wav', 'loss/GLaDOS_faithplategarbage06.wav', 'loss/GLaDOS_mp_coop_catapult_1end03.wav', 'loss/GLaDOS_mp_coop_come_along06.wav', 'loss/GLaDOS_mp_coop_confidencenotslow01.wav', 'loss/GLaDOS_mp_coop_humanresourcedeath01.wav', 'loss/GLaDOS_mp_coop_humanresourcedeath02.wav', 'loss/GLaDOS_mp_death05.wav', 'loss/GLaDOS_mp_death06.wav', 'loss/GLaDOS_mp_death08.wav', 'loss/GLaDOS_mp_death18.wav', 'loss/GLaDOS_mp_death20.wav']
 
@@ -77,6 +78,7 @@ function pickOpp() {
     dHp = parseInt($(".defender").attr("hp"), 10);
     dCp = parseInt($(".defender").attr("cp"), 10);
     $('#attack h4').text("TEST");
+    defenderName = $(".defender h2").text();
     opp = 1;
 }
 
@@ -89,20 +91,22 @@ $('#attack').on("click", function() {
             attackPower = (attckCounter * pAp);
             defenderHP = (dHp - attackPower);
             playerHP = (pHp - dCp);
-            console.log('attackPower ' + attackPower);
-            console.log("defenderHP " + defenderHP);
-            console.log("playerHP " + playerHP);
+            $(".report1").text("You attacted " + defenderName + " for " + attackPower + " damage.");
+            $(".report2").text(defenderName + " attacted you for " + dCp + " damage.");
             dHp = defenderHP;
             pHp = playerHP;
             $('.defender h3').text(defenderHP);
             $('.player h3').text(playerHP);
             if (defenderHP <= 0) {
+                $(".report1").text(" ");
+                $(".report2").text("You have defeted " + defenderName + ".");
                 oppDie();
 
             }
             if (playerHP <= 0) {
+                $(".report1").text(" ");
+                $(".report2").text(defenderName + " has defeted you.");
                 playerDie();
-
             }
         }
     }
@@ -115,7 +119,7 @@ function playerDie() {
     $('.player').appendTo("#dead");
     $('.player').addClass("dead");
     $('.player').removeClass("player");
-    $('#attack h4').text("YOU LOSS");
+    $('#attack h4').text("YOU LOSE");
     $('#reset').show();
 
 
