@@ -20,7 +20,7 @@ $('#attack h4').text("SELECT YOUR TEST SUBJECT");
 
 var load = ['load/GLaDOS_00_part1_entry-1.wav', 'load/GLaDOS_10_part1_entry-2.wav', 'load/GLaDOS_coop_hub_track05.wav', 'load/GLaDOS_coop_vault_intro01.wav', 'load/GLaDOS_mp_hub_return01a.wav', 'load/GLaDOS_mp_hub_return02a.wav', 'load/GLaDOS_mp_hub_return03a.wav']
 
-var winS = ['win/GLaDOS_01_part1_entry-1.wav', 'winS/GLaDOS_02_part1_entry-2.wav', 'winS/GLaDOS_02_part1_success-1.wav', 'winS/GLaDOS_03_part1_entry-2.wav', 'winS/GLaDOS_14_part1_entry-1.wav', 'winS/GLaDOS_botcoop_intro05.wav', 'winS/GLaDOS_dlc1_leaderboard01.wav', 'winS/GLaDOS_dlc1_leaderboard02.wav', 'winS/GLaDOS_dlc1_leaderboard03.wav', 'winS/GLaDOS_dlc1_leaderboard04.wav', 'winS/GLaDOS_dlc1_leaderboard06.wav', 'winS/GLaDOS_dlc1_leaderboard23.wav', 'winS/GLaDOS_epilogue23.wav', 'winS/GLaDOS_escape_02_spheredestroy4-06.wav', 'winS/GLaDOS_generic_security_camera_destroyed-5.wav', 'winS/GLaDOS_mp_coop_doors04.wav', 'winS/GLaDOS_mp_coop_paint_longjump_intro08.wav']
+var winS = ['winS/GLaDOS_01_part1_entry-1.wav', 'winS/GLaDOS_02_part1_entry-2.wav', 'winS/GLaDOS_02_part1_success-1.wav', 'winS/GLaDOS_03_part1_entry-2.wav', 'winS/GLaDOS_14_part1_entry-1.wav', 'winS/GLaDOS_botcoop_intro05.wav', 'winS/GLaDOS_dlc1_leaderboard01.wav', 'winS/GLaDOS_dlc1_leaderboard02.wav', 'winS/GLaDOS_dlc1_leaderboard03.wav', 'winS/GLaDOS_dlc1_leaderboard04.wav', 'winS/GLaDOS_dlc1_leaderboard06.wav', 'winS/GLaDOS_dlc1_leaderboard23.wav', 'winS/GLaDOS_epilogue23.wav', 'winS/GLaDOS_escape_02_spheredestroy4-06.wav', 'winS/GLaDOS_generic_security_camera_destroyed-5.wav', 'winS/GLaDOS_mp_coop_doors04.wav', 'winS/GLaDOS_mp_coop_paint_longjump_intro08.wav']
 
 var winA = ['winA/GLaDOS_03_part1_success-1.wav', 'winA/GLaDOS_04_part1_success-1.wav', 'winA/GLaDOS_05_part1_success-1.wav', 'winA/GLaDOS_15_part1_into_the_fire-1.wav', 'winA/GLaDOS_15_part1_Partyspeech-2.wav', 'winA/GLaDOS_15_part1_Partyspeech-3.wav', 'winA/GLaDOS_coop_test_chamber_oneplayer37.wav', 'winA/GLaDOS_dlc1_leaderboard16.wav', 'winA/GLaDOS_dlc1_leaderboard20.wav', 'winA/GLaDOS_dlc1_leaderboard22.wav', 'winA/GLaDOS_escape_00_part1_nag16-1.wav', 'winA/GLaDOS_mp_coop_fling_1end03.wav', 'winA/GLaDOS_mp_coop_radarroomend.wav', 'winA/GLaDOS_mp_coop_wall_intro03.wav', 'winA/GLaDOS_testchambermisc19.wav']
 
@@ -64,6 +64,8 @@ function pickPlayer() {
     pHp = parseInt($(".player").attr("hp"), 10);
     pAp = parseInt($(".player").attr("ap"), 10);
     $('#attack h4').text("SELECT AN OPPONENT TEST SUBJECT");
+    $('#attack').addClass("disabled");
+    $('#attack').removeClass("goBtn");
     player = 1;
 
 }
@@ -78,6 +80,8 @@ function pickOpp() {
     dHp = parseInt($(".defender").attr("hp"), 10);
     dCp = parseInt($(".defender").attr("cp"), 10);
     $('#attack h4').text("TEST");
+    $('#attack').addClass("goBtn");
+    $('#attack').removeClass("disabled");
     defenderName = $(".defender h2").text();
     opp = 1;
 }
@@ -120,6 +124,8 @@ function playerDie() {
     $('.player').addClass("dead");
     $('.player').removeClass("player");
     $('#attack h4').text("YOU LOSE");
+    $('#attack').addClass("disabled");
+    $('#attack').removeClass("goBtn");
     $('#reset').show();
 
 
@@ -133,9 +139,13 @@ function oppDie() {
     if (oppCount === 3) {
         playSounds(winA);
         $('#attack h4').text("YOU WIN");
+        $('#attack').addClass("disabled");
+        $('#attack').removeClass("goBtn");
         $('#reset').show();
     } else {
         playSounds(winS);
+        $('#attack').addClass("disabled");
+        $('#attack').removeClass("goBtn");
         $('#attack h4').text("SELECT A NEW OPPONENT");
         opp = 0;
     }
