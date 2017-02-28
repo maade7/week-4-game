@@ -95,8 +95,8 @@ $('#attack').on("click", function() {
             attackPower = (attckCounter * pAp);
             defenderHP = (dHp - attackPower);
             playerHP = (pHp - dCp);
-            $(".report1").text("You attacted " + defenderName + " for " + attackPower + " damage.");
-            $(".report2").text(defenderName + " attacted you for " + dCp + " damage.");
+            $(".report1").text("You attacked " + defenderName + " for " + attackPower + " damage.");
+            $(".report2").text(defenderName + " attacked you for " + dCp + " damage.");
             dHp = defenderHP;
             pHp = playerHP;
             $('.defender h3').text(defenderHP);
